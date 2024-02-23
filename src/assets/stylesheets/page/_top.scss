@@ -1,0 +1,296 @@
+@use '../global' as *;
+
+.back {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100lvh;
+  margin: 0;
+  padding: 0;
+  z-index: -1;
+  visibility: hidden;
+  pointer-events: none;
+
+  li {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    object-position: center;
+    transition: opacity .3s ease-out, visibility .3s ease-out;
+    opacity: 0;
+    visibility: hidden;
+
+    &.is-active {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+}
+
+.colors {
+  width: 20px;
+  position: absolute;
+  bottom: 90px;
+  right: -23px;
+}
+
+.colors_item {
+  li {
+    width: 100%;
+  }
+
+  button {
+    width: 100%;
+    aspect-ratio: 1;
+    background: #3C3C3C;
+
+    &[data-color="red"] {
+      background: #E15F63;
+    }
+
+    &[data-color="green"] {
+      background: #146428;
+    }
+
+    &[data-color="blue"] {
+      background: #006E9F;
+    }
+
+    &[data-color="white"] {
+      background: #FFFFFF;
+    }
+
+    &[data-color="black"] {
+      background: #131313;
+    }
+  }
+}
+
+.comimngsoon {
+  font-size: 1.6rem;
+  margin-top: 1em;
+}
+
+.top-wrapper {
+  max-width: 384px;
+  margin-inline: auto;
+  height: 100%;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  padding-block: 50px;
+  // background: rgba(#000, .1);
+  padding-inline: 23px;
+  color: var(--color-top-text, inherit);
+  font-family: $font-family-en;
+
+  @include is-small{
+    padding-inline: 51px;
+    max-width: 414px;
+  
+  }
+}
+
+.top-wrapper_contents {
+  margin-block: auto;
+  position: relative;
+}
+
+.top-wrapper_footer {
+  margin: 50px auto -28px;
+  line-height: 1;
+  max-width: 230px;
+
+  svg {
+    width: 100%;
+    vertical-align: bottom;
+    fill: var(--color-text, inherit);
+  }
+
+  small {
+    font-size: inherit;
+  }
+}
+
+.top-logo {
+  width: 300px;
+  max-width: 100%;
+
+  @include is-medium {
+    width: 280px;
+  }
+
+  @include is-small {
+    width: 260px;
+  }
+
+  svg {
+    width: 100%;
+    fill: currentColor;
+  }
+}
+
+.top-navi {
+  margin-top: calc(69px - 1em);
+  font-size: 1.7rem;
+
+  @include is-medium {
+    font-size: 1.6rem;
+  }
+
+  @include is-small {
+    font-size: 1.5rem;
+  }
+  
+  li + li {
+    margin-top: 15px;
+  }
+
+  a {
+    display: block;
+    width: fit-content;
+    position: relative;
+    line-height: 1;
+    letter-spacing: 0.05em;
+    padding: .2em 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: currentColor;
+      height: 1px;
+
+    }
+  }
+}
+
+
+.top-news {
+  margin-top: 77px;
+
+  @include is-small {
+    margin-top: 74px;
+  }
+}
+
+.top-news_label {
+  @include is-medium {
+    font-size: 1.3rem;
+  }
+}
+
+.top-news_label {
+  @include is-medium {
+    font-size: 1.3rem;
+  }
+}
+
+.top-news_list {
+  margin-top: 14px;
+  font-size: 1.6rem;
+
+  @include is-medium {
+    font-size: 1.5rem;
+  }
+
+  @include is-small {
+    font-size: 1.4rem;
+  }
+}
+
+.top-news_item {
+  & + & {
+    margin-top: 28px;
+
+    @include is-small {
+      margin-top: 24px;
+    }
+  }
+
+   a {
+    pointer-events: none;
+   }
+}
+
+.top-post {
+  display: block;
+  position: relative;
+  font-size: 1.6rem;
+}
+
+.top-news_icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 12px;
+  height: 12px;
+  top: .35em;
+  left: -11px;
+  transform: translateX(-100%);
+
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+  }
+}
+
+.top-eye {
+  bottom: 0;
+  position: absolute;
+  right: -23px;
+  width: 20px;
+  z-index: 10;
+  cursor: pointer;
+
+  .is-eye-close {
+    display: block;
+  }
+
+  .is-eye-open {
+    display: none;
+  }
+
+  &.is-active {
+    // color: #fff;
+    
+    .is-eye-close {
+      display: none;
+    }
+
+    .is-eye-open {
+      display: block;
+    }
+  }
+}
+
+.top-contact {
+  width: 32px;
+  margin-top: 43px;
+
+  @include is-small {
+    width: 30px;
+    margin-top: 36px;
+  }
+
+  a {
+    pointer-events: none;
+  }
+
+  svg {
+    fill: currentColor;
+  }
+}

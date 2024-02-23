@@ -1,0 +1,7 @@
+@use "sass:math";
+
+@function getRootFontSize($val) {
+  $browser-context: 16;
+  $root-font-size: math.div($val, $browser-context);
+  @return percentage($root-font-size);
+}

@@ -1,0 +1,55 @@
+// カラー設定
+$color-accent: #6200C5;
+$color-black: #000;
+$color-white: #FFF;
+
+$color-text-default: #131313;
+$color-back: #FFF5EA;
+
+// フォント設定
+$font-xLarge: 2rem;
+$font-large: 1.8rem;
+$font-medium: 1.5rem;
+$font-small: 1.3rem;
+$font-xSmall: 1.2rem;
+$font-minimum: 1rem;
+$font-default: $font-medium;
+
+// font-family
+$font-family-default: "FOT-筑紫Aオールド明朝 Pr6 R", TsukuAOldMinPr6-R, 游明朝, YuMincho, "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", "HGS明朝E", "ＭＳ Ｐ明朝", "ＭＳ 明朝", serif;
+$font-family-en: 'EB Garamond', serif;
+
+// letter-spacing
+$letterSpacing-wide: .15em;
+
+// line-height
+$lineHeight-oneLine: 1;
+$lineHeight-small: 1.4;
+$lineHeight-medium: 1.5;
+$lineHeight-large: 1.8;
+$lineHeight-xLarge: 2;
+$lineHeight-default: $lineHeight-medium;
+
+// transition
+$defaultTransition: all .3s ease-out;
+
+// easing
+$easing1: cubic-bezier(0.19, 1, 0.22, 1);
+$easing2: cubic-bezier(.55, 0, .1, 1);
+
+// media Queries
+// 基本のブレイクポイント方向を設定
+// up  : モバイルファースト
+// down: デスクトップファースト
+$breakpoint-default-direction: down;
+
+// ブレイクポイントの値入力 (コメントアウトは閲覧の参考)
+$breakpoint-xsmall: 600px; // スマートフォン
+$breakpoint-small: 760px; // タブレット縦持ち(Portrait)
+$breakpoint-medium: 1024px; // タブレット横持ち(Landscape)
+$breakpoint-large: 1200px; // デスクトップ(コンテンツの最大値など)
+$breakpoint-xlarge: 1600px; // ワイドディスプレイ(アートボードのサイズなど)
+
+// headerの高さ
+$headerHeightPc: 112px;
+$headerHeightSp: 70px;
