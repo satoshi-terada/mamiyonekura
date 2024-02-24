@@ -67,7 +67,7 @@ function get_portfolio_info( $post_id = 0 ) {
       }
 
       $date = get_field('date' , $post_id );
-      $res_data['data']['date'] = ( null != $date ) ? date('F, d. Y', mktime(0,0,0,substr( $date, 3, 2 ),substr( $date, 0, 2 ),substr( $date, 6, 4))) : '';
+      $res_data['data']['date'] = ( null != $date ) ? date('F, Y', mktime(0,0,0,substr( $date, 3, 2 ),substr( $date, 0, 2 ),substr( $date, 6, 4))) : '';
       $res_data['code'] = true;
     }
   } else {
