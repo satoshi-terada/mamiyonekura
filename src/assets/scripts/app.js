@@ -35,8 +35,6 @@ const addModalEvent = ((target) => {
     link.addEventListener('click', e => {
       e.preventDefault();
       const url = link.getAttribute('href');
-      const img = new Image();
-      img.src = url;
 
       const modal = document.createElement('div')
       modal.classList.add('modal');
@@ -53,14 +51,7 @@ const addModalEvent = ((target) => {
           <p class="modal_imageWrap"><img src="${url}"></p>
         </div>
       `;
-      document.body.insertAdjacentHTML('beforeend', modal);
 
-      img.addEventListener('load', () => {
-        modal.innerHTML = template;
-        modal.classList.add('is-visible');
-        addCloseEvent();
-      }, { once: true });
-        
       const addCloseEvent = () => {
         const close = [
           document.querySelector('.js-modal-close'),
@@ -79,6 +70,10 @@ const addModalEvent = ((target) => {
           });
         });
       };
+
+      modal.innerHTML = template;
+      setTimeout(() => modal.classList.add('is-visible'), 100);
+      addCloseEvent();
     });
   });
 });
@@ -143,8 +138,8 @@ const addModalEvent = ((target) => {
     }
   });
 
-  // URLパラメータにpostがある場合、そのスライドを表示
-  const postId = new URLSearchParams(window.location.search).get('post');
+  // URLにハッシュがある場合、その番号のスライドに移動
+  const postId = location.hash.split('#')[1];
   if(postId) slider.slideTo(parseInt(postId), 0);
 
   getActiveSlidePostId();
@@ -153,8 +148,43 @@ const addModalEvent = ((target) => {
     const activeIndex = slider.activeIndex;
     const activeSlide = slider.slides[activeIndex];
     const postId = activeSlide.getAttribute('data-post-id');
-    console.log(postId);
-    return postId;
+     
+    // ajaxでjsonデータを取得し、反映する
+    const xhr = new XMLHttpRequest();
+    const param = new URLSearchParams();
+    param.append( 'action', 'get_portfolio_info' );
+    param.append( 'post_id', postId);
+
+    xhr.open('GET', `${mysite_ajaxurl}?${param.toString()}`, true); // eslint-disable-line
+    xhr.responseType = 'json';
+    xhr.send();
+
+    xhr.onload = () => {
+      if (xhr.readyState == 4) { // 通信の完了時
+        if(xhr.status === 200) {
+          const data = xhr.response.data;
+
+          console.log(data);
+
+          const targets = [
+            'theme',
+            'title',
+            'materials',
+            'size',
+            'place',
+            'date',
+            'note'
+          ];
+
+          targets.forEach(target => {
+            const el = document.querySelector(`.js-portfolioData-${target}`);
+            if(target === 'note') el.innerHTML = data[target] ? data[target] : '';
+            el.textContent = data[target] ? data[target] : '';
+          });
+        }
+      }
+    }
+    return;
   }
 
   slider.on('activeIndexChange', getActiveSlidePostId);
@@ -217,7 +247,9 @@ barba.init({
   debug: false,
   sync: true,
   views: [],
-  prevent: ({ el }) => el.closest('#wpadminbar') ? true : false,
+  prevent: ({ el }) => {
+    return (el.classList.contains('barba-prevent') || el.closest('#wpadminbar'));
+  },
   transitions: [
     {
       async leave() {},
