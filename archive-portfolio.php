@@ -1,11 +1,18 @@
 <?php get_header(); ?>
 
+<?php // ポートフォリオ一覧を取得
+  $args = array(
+    'post_type' => 'portfolio',
+    'posts_per_page' => -1
+    );
+    $portfolio = new WP_Query( $args );
+?>
 <div data-barba="container" data-barba-namespace="home">
   <div class="wrapper">
-    <header class="header">
-      <div class="header_about">
-        <h1 class="header_about_logo">
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/logo-mami-yonekura-museum.svg" width="380" alt="MAMI YONEKURA MUSEUM">
+    <header class="header-small">
+      <div class="header_portfolio">
+        <h1 class="header_portfolio_logo">
+          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/logo-museum.svg" width="90" alt="MAMI YONEKURA MUSEUM">
         </h1>
       </div>
     </header>
@@ -18,30 +25,48 @@
         </ul>
       </nav>
     </aside>
-    <div class="contents-wide">
-      <div class="page-aboutContents">
-        <div class="page-aboutContentsProfile">
-          <h2 class="page-aboutContentsProfile_name"><span>米倉 万美</span><span>Mami Yonekura</span></h2>
-          <p class="page-aboutContents_text"><?php echo get_field('profile'); ?></p>
-        </div>
-
-        <div class="page-aboutContentsHistory">
-
-          <ul class="page-aboutContentsHistory_list">
-<?php $gallery = get_field('gallery');
-  if ( $gallery ) {
-    $gallery = str_replace( "\r\n", "\n", $gallery );
-    $gallery_list = explode("\n", $gallery );
-    foreach ( $gallery_list as $gallery_name ) { ?>
-        <li><?php echo $gallery_name; ?></li> 
+    <div class="contents-tall">
+      <div class="page-portfolioArchive">
+        <p class="page-portfolio_logo">
+          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/logo-mami-yonekura.svg" width="181" alt="MAMI YONEKURA MUSEUM">
+        </p>
+<?php if ( $portfolio->have_posts() ) {
+$view_count = 0;   ?>
+        <div class="page-portfolioArchive_lists">
+          <div class="js-slider-portfolio-archive swiper">
+            <div class="swiper-wrapper">
+<?php while ( $portfolio->have_posts()) : $portfolio->the_post();
+if ( $view_count % 10 == 0 ) { ?>
+              <div class="swiper-slide">
+                <ul class="page-portfolioArchive_list">
+<?php } ?>
+                  <li><a href="/portfolio-detail/#<?php echo $view_count; ?> "><?php the_title(); ?></a></li>
+<?php
+$view_count++;
+if ( $view_count % 10 == 0 || $view_count >= $portfolio->found_posts ) { ?>
+                </ul>
+              </div>
 <?php }
-  } ?>
-          </ul>
+    endwhile; ?>
+            </div>
+          </div>
         </div>
-    </div>
+<?php } ?>
+      </div>
     </div>
 
     </main>
+
+    <div class="aside-control">
+      <ul class="controller">
+        <li class="controller_item">
+          <button class="controller_button is-prev js-prev">戻る<svg aria-label="戻る" width="48" height="48"><use xlink:href="#icon-arrow-prev"></use></svg></button>
+        </li>
+        <li class="controller_item">
+          <button class="controller_button is-next js-next">進む<svg aria-label="進む" width="48" height="48"><use xlink:href="#icon-arrow-next"></use></svg></button>
+        </li>
+      </ul>
+    </div>
 
     <?php get_template_part('template-parts/news', 'archive'); ?>
 

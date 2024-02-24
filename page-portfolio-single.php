@@ -1,5 +1,27 @@
 <?php get_header(); ?>
 
+<?php // ポートフォリオ一覧を取得
+  $args = array(
+    'post_type' => 'portfolio',
+    'posts_per_page' => -1
+    );
+    $portfolio = new WP_Query( $args );
+
+    if ( $portfolio->have_posts() ) {
+      while ( $portfolio->have_posts()) : $portfolio->the_post();
+        $list[ get_the_ID() ]['images'] = get_field('image' , get_the_ID() );
+        $list[ get_the_ID() ]['theme'] = get_field('theme' , get_the_ID() );
+        $list[ get_the_ID() ]['material'] = get_field('material' , get_the_ID() );
+        $list[ get_the_ID() ]['size'] = get_field('size' , get_the_ID() );
+        $list[ get_the_ID() ]['place'] = get_field('place' , get_the_ID() );
+        $list[ get_the_ID() ]['date'] = get_field('date' , get_the_ID() );
+        $list[ get_the_ID() ]['note'] = get_field('note' , get_the_ID() );
+      endwhile;
+    } 
+    
+    print_r($list);
+?>
+
 <div data-barba="container" data-barba-namespace="home">
   <div class="wrapper">
     <header class="header">
