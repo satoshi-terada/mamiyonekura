@@ -2,10 +2,10 @@
 
 <div data-barba="container" data-barba-namespace="home">
   <div class="wrapper">
-    <header class="header">
-      <div class="header_about">
-        <h1 class="header_about_logo">
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/logo-mami-yonekura-museum.svg" width="380" alt="MAMI YONEKURA MUSEUM">
+    <header class="header-small">
+      <div class="header_news">
+        <h1 class="header_news_logo">
+          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/logo-museum.svg" width="90" alt="MAMI YONEKURA MUSEUM">
         </h1>
       </div>
     </header>
@@ -18,32 +18,61 @@
         </ul>
       </nav>
     </aside>
-    <div class="contents-wide">
-      <div class="page-aboutContents">
-        <div class="page-aboutContentsProfile">
-          <h2 class="page-aboutContentsProfile_name"><span>米倉 万美</span><span>Mami Yonekura</span></h2>
-          <p class="page-aboutContents_text"><?php echo get_field('profile'); ?></p>
-        </div>
+    <div class="contents-tall">
+      <div class="page-news">
+        <p class="page-news_logo">
+          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/logo-mami-yonekura.svg" width="181" alt="MAMI YONEKURA MUSEUM">
+        </p>
 
-        <div class="page-aboutContentsHistory">
+<?php if (have_posts()) { ?>
+        <div class="page-news_posts">
 
-          <ul class="page-aboutContentsHistory_list">
-<?php $gallery = get_field('gallery');
-  if ( $gallery ) {
-    $gallery = str_replace( "\r\n", "\n", $gallery );
-    $gallery_list = explode("\n", $gallery );
-    foreach ( $gallery_list as $gallery_name ) { ?>
-        <li><?php echo $gallery_name; ?></li> 
-<?php }
-  } ?>
-          </ul>
-        </div>
-    </div>
+<?php while (have_posts()) : the_post(); ?>
+          <article class="page-newsPost" id="post<?php the_ID(); ?>">
+            <h1 class="page-newsPost_title"><?php the_title(); ?></h1>
+            <time class="page-newsPost_date"><span><?php echo get_post_time('F, d'); ?></span><span class="year"><?php the_time('Y'); ?></span></time>
+            <div class="page-newsPost_contents">
+              <?php the_content(); ?>  
+
+              <?php $url = get_field('link');
+              if ( null != $url ) { ?>
+              <p class="page-newsPost_link"><a href="<?php echo $url['url'] ; ?>"<?php if ( $url['is_blank'] ) ?> target='_blank'><?php echo ( $url['label'] != '' ) ? $url['label'] : $url['url'] ; ?></a></p>
+         <?php } ?>
+            </div>
+<?php if ( get_field('is_enable') ) {
+  $event_outline = get_field('event_outline');
+?>
+            <div class="page-newsPostInfo">
+              <p><?php echo $event_outline['title']; ?></p>
+              <dl class="page-newsPostInfo_list">
+                <div>
+                  <dt>会期</dt>
+                  <dd><?php echo $event_outline['schedule']; ?></dd>
+                </div>
+                <div>
+                  <dt>在廊日</dt>
+                  <dd><?php echo $event_outline['date_in_gallery']; ?></dd>
+                </div>
+                <div>
+                  <dt>会場</dt>
+                  <dd><?php echo $event_outline['place']; ?><span><?php echo $event_outline['place_data']; ?></span></dd>
+                </div>
+              </dl>
+            </div>
+<?php } ?>
+          </article>
+<?php
+          endwhile;
+?>
+
+          </div>
+<?php } ?>
+      </div>
     </div>
 
     </main>
 
-    <?php get_template_part('template-parts/news', 'archive'); ?>
+  <?php get_template_part('template-parts/news', 'archive'); ?>
 
     <footer class="footer"><svg version="1.1" id="レイヤー_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
       y="0px" viewBox="0 0 230 12" style="enable-background:new 0 0 230 12;" xml:space="preserve">
