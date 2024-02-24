@@ -440,6 +440,12 @@
     gap: 4px;
     margin: 52px 0 15px;
 
+    > div {
+      display: flex;
+      font-size: 1.6rem;
+      max-width: 330px;
+    }  
+
     .theme {
       margin-bottom: 7px;
     }
@@ -448,13 +454,6 @@
       margin-bottom: 7px;
     }
   }
-
-  div {
-    display: flex;
-    font-size: 1.6rem;
-    max-width: 330px;
-  }
-
   dt {
     width: 5em;
   }
