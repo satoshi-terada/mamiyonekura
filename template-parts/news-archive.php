@@ -15,8 +15,13 @@
       
 <?php while ( $my_query->have_posts() ) : $my_query->the_post();
 
-if ( get_field('is_enable', get_the_ID() ) ) {
-  $event_outline = ( get_field('is_english', get_the_ID()) ) ? get_field('event_outline_en', get_the_ID()) : get_field('event_outline', get_the_ID()); ?>
+if ( get_field('is_english', get_the_ID() ) ) {
+  $is_english = true;
+  $event_outline = get_field('event_outline_en', get_the_ID());
+} else {
+  $is_english = false;
+  $event_outline['title'] = get_the_title(  );
+} ?>
       <article class="news_item">
         <a href="/news/#post<?php echo the_ID(); ?>" class="news-post">
           <p class="news_icon"><svg version="1.1" id="レイヤー_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
@@ -27,11 +32,13 @@ if ( get_field('is_enable', get_the_ID() ) ) {
           </g>
           </svg></p>
           <h2><?php echo $event_outline['title']; ?></h2>
+<?php if ( $is_english ) { ?>
           <p><?php echo $event_outline['address']; ?> / <?php echo $event_outline['place']; ?></p>
           <p><?php echo $event_outline['schedule']; ?></p>
+<?php } ?>
         </a>
       </article>
-<?php }
+<?php 
       endwhile; ?>
 
     </div>
