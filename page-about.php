@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div data-barba="container" data-barba-namespace="home">
+<div data-barba="container" data-barba-namespace="about">
   <div class="wrapper">
     <header class="header">
       <div class="header_about">

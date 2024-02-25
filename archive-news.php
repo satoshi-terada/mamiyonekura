@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div data-barba="container" data-barba-namespace="home">
+<div data-barba="container" data-barba-namespace="news-archive">
   <div class="wrapper">
     <header class="header-small">
       <div class="header_news">

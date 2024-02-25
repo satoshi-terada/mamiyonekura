@@ -17,9 +17,7 @@
         $list[ get_the_ID() ]['date'] = get_field('date' , get_the_ID() );
         $list[ get_the_ID() ]['note'] = get_field('note' , get_the_ID() );
       endwhile;
-    } 
-    
-    print_r($list);
+    }
 ?>
 
 <div data-barba="container" data-barba-namespace="home">

@@ -7,7 +7,7 @@
     );
     $portfolio = new WP_Query( $args );
 ?>
-<div data-barba="container" data-barba-namespace="home">
+<div data-barba="container" data-barba-namespace="portfolio-archive">
   <div class="wrapper">
     <header class="header-small">
       <div class="header_portfolio">

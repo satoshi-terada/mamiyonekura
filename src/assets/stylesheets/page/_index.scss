@@ -415,15 +415,32 @@
 .controller {
   display: flex;
   margin-block: 50px -10px;
+  margin-left: -10px;
 }
 
 .controller_button {
   appearance: none;
   width: 40px;
   aspect-ratio: 1;
+  overflow: hidden;
+  text-indent: 200%;
+  white-space: nowrap;
 
   svg {
     display: none;
+  }
+
+  &.is-prev {
+    background: url(../images/common/icon_arrow_prev.svg) no-repeat center/10px auto;
+  }
+
+  &.is-next {
+    background: url(../images/common/icon_arrow_next.svg) no-repeat center/10px auto;;
+  }
+
+  &[disabled] {
+    opacity: .25;
+    cursor: default;
   }
 }
 
@@ -465,7 +482,7 @@
   .controller {
     position: absolute;
     top: 0;
-    left: 0;
+    left: -10px;
     margin: 0;
   }
 }
@@ -488,6 +505,25 @@
   aspect-ratio: 0.65658/1;
   position: relative;
 
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    border: 1px solid currentColor;
+    border-left-color: transparent;
+    width: 24px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  }
+
   img {
     width: 447px;
     vertical-align: bottom;
@@ -503,6 +539,10 @@
 
 .page-inquiryForm {
   max-width: 760px;
+
+  code {
+    font-family: inherit;
+  }
 }
 
 .page-inquiryForm_blocks {
@@ -526,10 +566,12 @@
     gap: 20px;
     line-height: 1;
     align-items: center;
+    position: relative;
 
     p {
       width: 5em;
       padding-block: 5px;
+      flex-shrink: 1;
 
       &::before {
         content: "◯";
@@ -539,17 +581,34 @@
       }
     }
 
+    .wpcf7-form-control-wrap {
+      flex: 1;
+    }
+
     input,
     select {
-      flex: 1;
+      width: 100%;
       background: none;
       border: none;
       padding-block: 5px;
+      font-family: inherit;
+    }
+  }
+
+  .wpcf7-form-control-wrap {
+    position: static;
+  }
+
+  .wpcf7-not-valid-tip {
+    position: absolute;
+    top: calc(100% + .5em);
+    left: 0;
+
+    &::before {
+      content: "▲"
     }
   }
 }
-
-
 
 .page-inquiryForm_textarea {
   margin-top: 60px;
@@ -572,12 +631,31 @@
   }
 
   textarea {
+    width: 100%;
     height: 11.5em;
+    font-family: inherit !important;
+  }
+
+  .wpcf7-not-valid-tip {
+    position: absolute;
+    top: calc(100% + .5em);
+    left: 0;
+
+    &::before {
+      content: "▲"
+    }
   }
 }
 
 .page-inquiryForm_button {
   margin-top: 64px;
+
+  input,
+  button {
+    appearance: none;
+    cursor: pointer;
+    font-family: inherit;
+  }
 }
 
 .modal {
@@ -593,13 +671,23 @@
     visibility: visible;
     opacity: 1;
   }
+}
 
-  .spinner {
+.modal_inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  
+  &::before {
+    content: "";
     position: absolute;
     inset: 0;
     margin: auto;
     border: 2px solid #fff;
-    border-left: none;
+    border-left-color: transparent;
     width: 32px;
     aspect-ratio: 1;
     border-radius: 50%;
@@ -613,18 +701,9 @@
   }
 }
 
-.modal_inner {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: auto;
-}
-
 .modal_imageWrap {
   position: absolute;
-  inset: 120px;
+  inset: 40px;
   margin: auto;
 
   img {
@@ -633,8 +712,8 @@
     margin: auto;
     width: auto;
     height: auto;
-    max-width: 100%;
-    max-height: 100%;
+    max-width: min(100%, 1920px);
+    max-height: min(100%, 1920px);
   }
 }
 
@@ -642,10 +721,11 @@
   position: absolute;
   z-index: 100;
   top: 50px;
-  right: 60px;
+  right: 44px;
   width: 44px;
   height: 44px;
   cursor: pointer;
+  backdrop-filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
 
   &::before,
   &::after {

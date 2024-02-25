@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div data-barba="container" data-barba-namespace="home">
+<div data-barba="container" data-barba-namespace="inquiry">
   <div class="wrapper">
     <header class="header-small">
       <div class="header_news">
@@ -24,113 +24,13 @@
       </p>
       <div class="page-inquiry">
         <div class="page-inquiryForm">
-          <form action="">
-            <div class="page-inquiryForm_blocks">
-              <div class="page-inquiryForm_block">
-                <label>
-                  <p>件名</p>
-                  <select name="" id="">
-                    <option value="">展示の依頼</option>
-                    <option value="">option1</option>
-                    <option value="">option2</option>
-                    <option value="">option3</option>
-                  </select>
-                </label>
-              </div>
-            </div>
-            <div class="page-inquiryForm_blocks">
-              <div class="page-inquiryForm_block">
-                <label>
-                  <p>お名前</p>
-                  <input type="text" value="" required>
-                </label>
-              </div>
-              <div class="page-inquiryForm_block">
-                <label>
-                  <p>店名</p>
-                  <input type="text" value="">
-                </label>
-              </div>
-              <div class="page-inquiryForm_block">
-                <label>
-                  <p>ご住所</p>
-                  <input type="text" value="">
-                </label>
-              </div>
-              <div class="page-inquiryForm_block">
-                <label>
-                  <p>お電話</p>
-                  <input type="text" value="" required>
-                </label>
-              </div>
-              <div class="page-inquiryForm_block">
-                <label>
-                  <p>MAil</p>
-                  <input type="email" value="" required>
-                </label>
-              </div>
-              <div class="page-inquiryForm_block">
-                <label>
-                  <p>URL</p>
-                  <input type="text" value="">
-                </label>
-              </div>
-            </div>
-            <div class="page-inquiryForm_textarea">
-              <label for="">
-                <p>お問い合わせ内容</p>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
-              </label>
-            </div>
-            <div class="page-inquiryForm_button">
-              <button class="submit">送信</button>
-            </div>
-          </form>
-
-
-        </div>
-        
-
-
-      </div>
-    </div>
-
-    </main>
-    <div class="aside-news">
-      <div class="news">
-        <p class="news_label">NEW</p>
-        <div class="news_list">
-          <article class="news_item">
-            <a href="" class="news-post">
-              <p class="news_icon"><svg version="1.1" id="レイヤー_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                y="0px" viewBox="0 0 12 12" style="enable-background:new 0 0 12 12;" xml:space="preserve">
-              <g>
-                <path class="st0" d="M12,6c0,3.3-2.7,6-6,6c-3.3,0-6-2.7-6-6c0-3.4,2.7-6,6-6C9.3,0,12,2.7,12,6z M0.9,6c0,3.3,2.3,5.9,5.1,5.9
-                  c2.8,0,5.1-2.6,5.1-5.9c0-3.3-2.3-5.9-5.1-5.9C3.2,0.1,0.9,2.7,0.9,6z"/>
-              </g>
-              </svg></p>
-              <h2>Mami Yonekura Exhibition “Onsen  Japan”</h2>
-              <p>Ashikaga,Tocihigi / Gallary Mominoki</p>
-              <p>December,12 ― December, 24. 2023</p>
-            </a>
-          </article>
-          <article class="news_item">
-            <a href="" class="news-post">
-              <p class="news_icon"><svg version="1.1" id="レイヤー_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                y="0px" viewBox="0 0 12 12" style="enable-background:new 0 0 12 12;" xml:space="preserve">
-              <g>
-                <path class="st0" d="M12,6c0,3.3-2.7,6-6,6c-3.3,0-6-2.7-6-6c0-3.4,2.7-6,6-6C9.3,0,12,2.7,12,6z M0.9,6c0,3.3,2.3,5.9,5.1,5.9
-                  c2.8,0,5.1-2.6,5.1-5.9c0-3.3-2.3-5.9-5.1-5.9C3.2,0.1,0.9,2.7,0.9,6z"/>
-              </g>
-              </svg></p>
-              <h2>Mami Yonekura Exhibition “Onsen  Japan”</h2>
-              <p>Ashikaga,Tocihigi / Gallary Mominoki</p>
-              <p>December,12 ― December, 24. 2023</p>
-            </a>
-          </article>
+          <?php the_content(); ?>
         </div>
       </div>
     </div>
+    
+    <?php get_template_part('template-parts/news', 'archive'); ?>
+
     <footer class="footer"><svg version="1.1" id="レイヤー_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
       y="0px" viewBox="0 0 230 12" style="enable-background:new 0 0 230 12;" xml:space="preserve">
     <g>

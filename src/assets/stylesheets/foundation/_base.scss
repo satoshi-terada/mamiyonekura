@@ -14,7 +14,6 @@
   --space: min(4.6875vw, 60px);
   --space-right: var(--space);
   --space-left: var(--space);
-  scroll-behavior: smooth;
   scroll-padding-top: 3rem;
 
   @include is-small {

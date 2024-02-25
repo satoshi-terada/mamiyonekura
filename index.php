@@ -109,7 +109,7 @@
           </article> -->
         </div>
       </div>
-      <p class="top-contact"><a href=""><svg version="1.1" id="レイヤー_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+      <p class="top-contact"><a href="<?php echo home_url('/inquiry'); ?>"><svg version="1.1" id="レイヤー_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
         y="0px" viewBox="0 0 34 20" style="enable-background:new 0 0 34 20;" xml:space="preserve">
       <path class="st0" d="M0,0v20h34V0H0z M33,1L33,1L33,1L33,1z M32,1L17,9.4L2,1H32z M1,1L1,1L1,1L1,1z M1,19V1.6l16,9l16-9V19H1z"/>
       </svg>
