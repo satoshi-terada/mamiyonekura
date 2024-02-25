@@ -55,8 +55,6 @@ if ( $view_count % 10 == 0 || $view_count >= $portfolio->found_posts ) { ?>
       </div>
     </div>
 
-    </main>
-
     <div class="aside-control">
       <ul class="controller">
         <li class="controller_item">

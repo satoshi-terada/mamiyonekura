@@ -125,8 +125,6 @@
       </div>
     </div>
 
-    </main>
-
     <div class="aside-control">
       <ul class="controller">
         <li class="controller_item">

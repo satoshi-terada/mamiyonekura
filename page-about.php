@@ -28,14 +28,14 @@
         <div class="page-aboutContentsHistory">
 
           <ul class="page-aboutContentsHistory_list">
-<?php $gallery = get_field('gallery');
-  if ( $gallery ) {
-    $gallery = str_replace( "\r\n", "\n", $gallery );
-    $gallery_list = explode("\n", $gallery );
-    foreach ( $gallery_list as $gallery_name ) { ?>
-        <li><?php echo $gallery_name; ?></li> 
-<?php }
-  } ?>
+          <?php $gallery = get_field('gallery');
+            if ( $gallery ) {
+              $gallery = str_replace( "\r\n", "\n", $gallery );
+              $gallery_list = explode("\n", $gallery );
+              foreach ( $gallery_list as $gallery_name ) { ?>
+                  <li><?php echo $gallery_name; ?></li> 
+          <?php }
+            } ?>
           </ul>
         </div>
     </div>
