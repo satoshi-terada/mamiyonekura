@@ -1,11 +1,13 @@
 import barba from '@barba/core';
 import { common } from './common';
 
+import home from './pages/home';
 import portfolioArchive from './pages/portfolio-archive';
 import portfolioDetail from './pages/portfolio-detail';
 import about from './pages/about';
 
 const page = {
+  home: new home(),
   portfolioArchive: new portfolioArchive(),
   portfolioDetail: new portfolioDetail(),
   about: new about(),
@@ -80,6 +82,15 @@ barba.init({
   debug: false,
   sync: true,
   views: [
+    {
+      namespace: 'home',
+      beforeLeave() {
+        document.documentElement.style.setProperty('--color-text', 'var(--color-text, $color-text-default)');
+      },
+      afterEnter({next}) {
+        page.home.init(next.container);
+      },
+    },
     {
       namespace: 'portfolio-archive',
       afterEnter({next}) {
