@@ -61,8 +61,6 @@ export default class portfolioDetail {
       next: next.querySelector('.js-next'),
       prev: next.querySelector('.js-prev')
     }
-
-    console.log(button);
     
     const slider = new Swiper(target, { // eslint-disable-line
       speed: 500,
@@ -96,43 +94,50 @@ export default class portfolioDetail {
       const activeSlide = slider.slides[activeIndex];
       const postId = activeSlide.getAttribute('data-post-id');
       
-      // ajaxでjsonデータを取得し、反映する
-      const xhr = new XMLHttpRequest();
-      const param = new URLSearchParams();
-      param.append( 'action', 'get_portfolio_info' );
-      param.append( 'post_id', postId);
+      (() => {
+        console.log(mysite_ajaxurl); // eslint-disable-line
+        
+        if(!mysite_ajaxurl) return false; // eslint-disable-line
+        // ajaxでjsonデータを取得し、反映する
+        const xhr = new XMLHttpRequest();
+        const param = new URLSearchParams();
+        param.append( 'action', 'get_portfolio_info' );
+        param.append( 'post_id', postId);
 
-      xhr.open('GET', `${mysite_ajaxurl}?${param.toString()}`, true); // eslint-disable-line
-      xhr.responseType = 'json';
-      xhr.send();
+        
 
-      xhr.onload = () => {
-        if (xhr.readyState == 4) { // 通信の完了時
-          if(xhr.status === 200) {
-            const data = xhr.response.data;
+        xhr.open('GET', `${mysite_ajaxurl}?${param.toString()}`, true); // eslint-disable-line
+        xhr.responseType = 'json';
+        xhr.send();
 
-            const targets = [
-              'theme',
-              'title',
-              'materials',
-              'size',
-              'place',
-              'date',
-              'note'
-            ];
+        xhr.onload = () => {
+          if (xhr.readyState == 4) { // 通信の完了時
+            if(xhr.status === 200) {
+              const data = xhr.response.data;
 
-            targets.forEach(target => {
-              const el = document.querySelector(`.js-portfolioData-${target}`);
-              if(target === 'note') {
-                const html = data[target] ? data[target] : '';
-                el.innerHTML = html;
-                return;
-              } 
-              el.textContent = data[target] ? data[target] : '';
-            });
+              const targets = [
+                'theme',
+                'title',
+                'materials',
+                'size',
+                'place',
+                'date',
+                'note'
+              ];
+
+              targets.forEach(target => {
+                const el = document.querySelector(`.js-portfolioData-${target}`);
+                if(target === 'note') {
+                  const html = data[target] ? data[target] : '';
+                  el.innerHTML = html;
+                  return;
+                } 
+                el.textContent = data[target] ? data[target] : '';
+              });
+            }
           }
         }
-      }
+      })();
       return;
     }
 
