@@ -38,10 +38,8 @@
             } ?>
           </ul>
         </div>
+      </div>
     </div>
-    </div>
-
-    </main>
 
     <?php get_template_part('template-parts/news', 'archive'); ?>
 

@@ -73,7 +73,6 @@
       </div>
     </div>
 
-    </main>
     <div class="aside-news">
       <div class="news">
         <p class="news_label">NEW</p>

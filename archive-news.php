@@ -70,8 +70,6 @@
       </div>
     </div>
 
-    </main>
-
   <?php get_template_part('template-parts/news', 'archive'); ?>
 
     <footer class="footer"><?php get_template_part('template-parts/svg', 'copyright'); ?></footer>
