@@ -4,6 +4,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  outline: none;
 }
 
 
@@ -22,7 +23,7 @@
   }
 }
 
-html {  
+html {
   font-size: 62.5%;
   letter-spacing: 0.03em;
   font-feature-settings:'palt' 1;
@@ -58,6 +59,11 @@ li {
 a {
   color: inherit;
   text-decoration: none;
+  transition: .2s ease-out;
+
+  &:hover {
+    opacity: .65;
+  }
 }
 
 img {

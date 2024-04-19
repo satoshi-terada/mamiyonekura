@@ -5,7 +5,12 @@
     <header class="header-small">
       <div class="header_news">
         <h1 class="header_news_logo">
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/logo-museum.svg" width="90" alt="MAMI YONEKURA MUSEUM">
+          <a href="<?php echo home_url('/'); ?>">
+            <picture>
+              <source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/common/logo-mami-yonekura-museum.svg" width="380" alt="MAMI YONEKURA MUSEUM" media="(max-width: 1024px)">
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/logo-museum.svg" width="90" alt="MAMI YONEKURA MUSEUM">
+            </picture>
+          </a>
         </h1>
       </div>
     </header>
@@ -21,7 +26,9 @@
     <div class="contents-tall">
       <div class="page-news">
         <p class="page-news_logo">
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/logo-mami-yonekura.svg" width="181" alt="MAMI YONEKURA MUSEUM">
+          <a href="<?php echo home_url('/'); ?>">
+            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/logo-mami-yonekura.svg" width="181" alt="MAMI YONEKURA MUSEUM">
+          </a>
         </p>
 
         <div class="page-news_posts">
@@ -156,4 +163,5 @@
   </div>
 </div>
 
+<?php get_template_part('template-parts/colortip'); ?>
 <?php get_footer(); ?>

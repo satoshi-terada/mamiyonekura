@@ -6,7 +6,7 @@ import portfolioArchive from './pages/portfolio-archive';
 import portfolioDetail from './pages/portfolio-detail';
 import about from './pages/about';
 
-const page = {
+const pages = {
   home: new home(),
   portfolioArchive: new portfolioArchive(),
   portfolioDetail: new portfolioDetail(),
@@ -17,6 +17,27 @@ const page = {
 if (history.scrollRestoration) {
   history.scrollRestoration = 'manual';
 }
+
+const changeFontColor = next => {
+  const colors = next.querySelector('.js-colors');
+  const buttons = colors.querySelectorAll('button');
+
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      // クリックするとdata-rgbの値を取得し、rootに変数を設定する
+      const rgb = button.dataset.rgb;
+      document.documentElement.style.setProperty('--color-text', rgb);
+      // クリックしたボタンにis-activeを付与する
+      buttons.forEach((button) => {
+        button.classList.remove('is-active');
+      });
+      button.classList.add('is-active');
+      // ローカルストレージに選択した色を保存する
+      localStorage.setItem('color', rgb);
+    });
+  });
+}
+
 
 // meta系の更新
 const ANALYTICS_TRACKING_ID = '******';
@@ -70,7 +91,7 @@ const pageStartScroll = next => {
     window.scrollTo(0,0);
     return;
   }
-  
+
   const anchor = next.container.querySelector(location.hash);
   anchor.scrollIntoView({
     block: 'start'
@@ -84,29 +105,29 @@ barba.init({
   views: [
     {
       namespace: 'home',
-      beforeLeave() {
-        document.documentElement.style.setProperty('--color-text', 'var(--color-text, $color-text-default)');
-      },
       afterEnter({next}) {
-        page.home.init(next.container);
+        pages.home.init(next.container);
       },
+      afterLeave() {
+        document.querySelector('[data-barba="container"]').style.pointerEvents = 'auto';
+      }
     },
     {
       namespace: 'portfolio-archive',
       afterEnter({next}) {
-        page.portfolioArchive.init(next.container);
+        pages.portfolioArchive.init(next.container);
       }
     },
     {
       namespace: 'portfolio-detail',
       afterEnter({next}) {
-        page.portfolioDetail.init(next.container);
+        pages.portfolioDetail.init(next.container);
       }
     },
     {
       namespace: 'about',
       afterEnter({next}) {
-        page.about.init(next.container);
+        pages.about.init(next.container);
       }
     },
     {
@@ -121,6 +142,19 @@ barba.init({
     {
       once({next}) {
         pageStartScroll(next);
+        changeFontColor(next.container);
+
+        // ローカルストレージに保存されている色を取得し、rootに変数を設定する
+        const color = localStorage.getItem('color');
+        if (color) {
+          document.documentElement.style.setProperty('--color-text', color);
+          const buttons = next.container.querySelectorAll('button');
+          buttons.forEach((button) => {
+            if (button.dataset.rgb === color) {
+              button.classList.add('is-active');
+            }
+          });
+        }
 
         setTimeout(() => {
           common.elements.html.style.scrollBehavior = 'smooth';
@@ -128,7 +162,8 @@ barba.init({
       },
       async leave() {},
       beforeEnter({ next }) {
-        updateMeta(next)
+        updateMeta(next);
+        changeFontColor(next.container);
       },
       enter() {},
       afterEnter({next}) {

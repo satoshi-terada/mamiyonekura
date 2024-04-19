@@ -9,11 +9,11 @@
           <g>
             <rect x="52.9" y="0.3" class="st0" width="2.1" height="14.4"/>
             <g>
-              <polygon class="st0" points="6.8,11.8 2.1,0.3 0,0.3 0,14.7 2.1,14.7 2.1,5.7 5.7,14.4 8,14.4 11.5,5.7 11.5,14.7 13.6,14.7 
+              <polygon class="st0" points="6.8,11.8 2.1,0.3 0,0.3 0,14.7 2.1,14.7 2.1,5.7 5.7,14.4 8,14.4 11.5,5.7 11.5,14.7 13.6,14.7
                 13.6,0.3 11.5,0.3 			"/>
             </g>
             <g>
-              <polygon class="st0" points="40,11.8 35.3,0.3 33.2,0.3 33.2,14.7 35.3,14.7 35.3,5.7 38.9,14.4 41.2,14.4 44.7,5.7 44.7,14.7 
+              <polygon class="st0" points="40,11.8 35.3,0.3 33.2,0.3 33.2,14.7 35.3,14.7 35.3,5.7 38.9,14.4 41.2,14.4 44.7,5.7 44.7,14.7
                 46.8,14.7 46.8,0.3 44.7,0.3 			"/>
             </g>
             <g>
@@ -30,11 +30,11 @@
               <polygon class="st0" points="71.9,6.7 68.4,0.3 66.1,0.3 70.8,9.1 70.8,14.7 73,14.7 73,9.1 77.7,0.3 75.4,0.3 			"/>
             </g>
             <g>
-              <polygon class="st0" points="133.9,0.3 128.2,7.6 128.2,0.3 126.1,0.3 126.1,14.7 128.2,14.7 128.2,10.9 130.1,8.4 134.1,14.7 
+              <polygon class="st0" points="133.9,0.3 128.2,7.6 128.2,0.3 126.1,0.3 126.1,14.7 128.2,14.7 128.2,10.9 130.1,8.4 134.1,14.7
                 136.7,14.7 131.5,6.7 131.5,6.7 136.5,0.3 			"/>
             </g>
             <g>
-              <polygon class="st0" points="97,0.3 97,14.7 99.1,14.7 99.1,4 105.9,14.7 108.1,14.7 108.1,0.3 105.9,0.3 105.9,11 99.2,0.3 			
+              <polygon class="st0" points="97,0.3 97,14.7 99.1,14.7 99.1,4 105.9,14.7 108.1,14.7 108.1,0.3 105.9,0.3 105.9,11 99.2,0.3
                 "/>
             </g>
             <g>
@@ -43,7 +43,7 @@
             </g>
             <path class="st0" d="M86.3,14.9c-4,0-6.5-2.8-6.5-7.4c0-4.6,2.5-7.4,6.5-7.4c4,0,6.5,2.8,6.5,7.4C92.8,12.1,90.3,14.9,86.3,14.9z
               M86.3,2.2c-1.6,0-4.3,0.7-4.3,5.3c0,4.6,2.7,5.3,4.3,5.3c1.6,0,4.4-0.7,4.4-5.3C90.6,2.9,87.9,2.2,86.3,2.2z"/>
-            <polygon class="st0" points="120.9,2.4 120.9,0.3 113.3,0.3 113.3,14.7 120.9,14.7 120.9,12.6 115.5,12.6 115.5,8.4 120.5,8.4 
+            <polygon class="st0" points="120.9,2.4 120.9,0.3 113.3,0.3 113.3,14.7 120.9,14.7 120.9,12.6 115.5,12.6 115.5,8.4 120.5,8.4
               120.5,6.3 115.5,6.3 115.5,2.4 		"/>
           </g>
           <g>
@@ -52,14 +52,14 @@
             <path class="st0" d="M276,15c-3.1,0-5.3-2.3-5.3-5.5V0.3h2.1v9.2c0,2,1.3,3.3,3.2,3.3c1.9,0,3.2-1.4,3.2-3.3V0.3h2.1v9.2
               C281.3,12.7,279,15,276,15z"/>
             <g>
-              <polygon class="st0" points="217.2,11.8 212.5,0.3 210.4,0.3 210.4,14.7 212.5,14.7 212.5,5.7 216,14.4 218.3,14.4 221.9,5.7 
+              <polygon class="st0" points="217.2,11.8 212.5,0.3 210.4,0.3 210.4,14.7 212.5,14.7 212.5,5.7 216,14.4 218.3,14.4 221.9,5.7
                 221.9,14.7 224,14.7 224,0.3 221.9,0.3 			"/>
             </g>
             <g>
-              <polygon class="st0" points="293.2,11.8 288.5,0.3 286.4,0.3 286.4,14.7 288.5,14.7 288.5,5.7 292,14.4 294.3,14.4 297.9,5.7 
+              <polygon class="st0" points="293.2,11.8 288.5,0.3 286.4,0.3 286.4,14.7 288.5,14.7 288.5,5.7 292,14.4 294.3,14.4 297.9,5.7
                 297.9,14.7 300,14.7 300,0.3 297.9,0.3 			"/>
             </g>
-            <polygon class="st0" points="265.8,2.4 265.8,0.3 258.2,0.3 258.2,14.7 265.8,14.7 265.8,12.6 260.3,12.6 260.3,8.4 265.3,8.4 
+            <polygon class="st0" points="265.8,2.4 265.8,0.3 258.2,0.3 258.2,14.7 265.8,14.7 265.8,12.6 260.3,12.6 260.3,8.4 265.3,8.4
               265.3,6.3 260.3,6.3 260.3,2.4 		"/>
             <path class="st0" d="M248.6,15c-5.2,0-5.3-4.2-5.3-4.3h2.1c0,0.3,0.2,2.1,3.2,2.1c2.7,0,3-1.6,3-2.1c0-1.6-0.9-1.9-3.2-2.3
               c-2-0.4-4.7-0.9-4.7-4.2c0-2.6,1.9-4.2,4.8-4.2c1.4,0,2.7,0.4,3.5,1.2c0.8,0.8,1.3,1.8,1.3,3h-2.1c0-1.5-1.4-2.1-2.7-2.1
@@ -84,11 +84,11 @@
               'post_type' => 'news',
               'posts_per_page' => 3
             );
-          
+
             $my_query = new WP_Query( $args );
 
             if ( $my_query->have_posts() ) { ?>
-                
+
           <?php while ( $my_query->have_posts() ) : $my_query->the_post();
 
           if ( get_field('is_english', get_the_ID() ) ) {
@@ -114,7 +114,7 @@
                   <?php } ?>
                   </a>
                 </article>
-          <?php 
+          <?php
                 endwhile; ?>
           <?php }
           wp_reset_postdata();
@@ -126,14 +126,13 @@
       <path class="st0" d="M0,0v20h34V0H0z M33,1L33,1L33,1L33,1z M32,1L17,9.4L2,1H32z M1,1L1,1L1,1L1,1z M1,19V1.6l16,9l16-9V19H1z"/>
       </svg>
       </a></p>
-      <ul class="colors js-colors">
-      <li class="colors_item"><button data-color="red" data-rgb="#E15F63"></button></li>
-      <li class="colors_item"><button data-color="green" data-rgb="#146428"></button></li>
-      <li class="colors_item"><button data-color="blue" data-rgb="#006E9F"></button></li>
-      <li class="colors_item"><button data-color="white" data-rgb="#FFFFFF"></button></li>
-      <li class="colors_item"><button data-color="black" data-rgb="#131313"></button></li>
-      </ul>
-      
+
+      <?php get_template_part('template-parts/colortip'); ?>
+
+      <p class="top-drawing">
+        <button class="top-drawing_button js-drawingTrigger">PEN</button>
+      </p>
+
       <button class="top-eye js-topEye-button">
         <svg version="1.1" id="レイヤー_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 10" style="enable-background:new 0 0 20 10;" xml:space="preserve" class="is-eye-close">
           <path d="M19.9,5.8C20,5.9,20,6,19.9,6.1l-0.4,0.4c-0.1,0.1-0.2,0.1-0.3,0l-2-1.8c-0.8,0.7-1.7,1.3-2.7,1.7l1.1,2.3
@@ -158,15 +157,33 @@
     <p class="top-wrapper_footer"><?php get_template_part('template-parts/svg', 'copyright'); ?></p>
   </div>
 
-  <div class="back js-topEye-background">
+  <div class="back js-topEye-background" draggable="false">
     <ul>
-      <li><img src="<?php echo get_template_directory_uri() ;?>/assets/images/pages/front/back1.webp" alt=""></li>
-      <li><img src="<?php echo get_template_directory_uri() ;?>/assets/images/pages/front/back2.webp" alt=""></li>
-      <li><img src="<?php echo get_template_directory_uri() ;?>/assets/images/pages/front/back3.webp" alt=""></li>
-      <li><img src="<?php echo get_template_directory_uri() ;?>/assets/images/pages/front/back4.webp" alt=""></li>
-      <li><img src="<?php echo get_template_directory_uri() ;?>/assets/images/pages/front/back5.webp" alt=""></li>
+      <?php
+      // portfolio カスタム投稿の画像をrandomで5件取得
+      $args = array(
+        'post_type' => 'portfolio',
+        'posts_per_page' => 5,
+        'orderby' => 'rand'
+      );
+
+      $my_query = new WP_Query( $args );
+      if ( $my_query->have_posts() ) :
+        while ( $my_query->have_posts() ) : $my_query->the_post();
+          $image_id = get_field('image', get_the_ID());
+          $image = wp_get_attachment_image_src($image_id, 'full');
+          $image_url = $image[0];
+      ?>
+      <li><img src="<?php echo $image_url; ?>" alt=""></li>
+      <?php
+        endwhile;
+      endif;
+      wp_reset_postdata();
+      ?>
     </ul>
   </div>
+  <canvas id="drawingCanvas" width="800" height="600"></canvas>
 </div>
-<?php get_footer(); ?>
 
+<?php get_template_part('template-parts/icon', 'sprite'); ?>
+<?php get_footer(); ?>

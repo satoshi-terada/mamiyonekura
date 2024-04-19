@@ -127,4 +127,5 @@
   </div>
 </div>
 
+<?php get_template_part('template-parts/colortip'); ?>
 <?php get_footer(); ?>

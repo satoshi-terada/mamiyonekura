@@ -57,7 +57,7 @@ const addModalEvent = ((target) => {
           document.querySelector('.js-modal-close'),
           document.querySelector('.modal_inner')
         ];
-      
+
         close.forEach(el => {
           el.addEventListener('click', e => {
             // imgをクリックした場合は閉じない
@@ -84,21 +84,26 @@ const addModalEvent = ((target) => {
   if(!video) return;
 
   let isPlaying = false;
+  console.log('video');
+
 
   trigger.addEventListener('click', e => {
     e.preventDefault();
-    
+
     if(isPlaying) {
       video.classList.remove('is-playing');
       trigger.classList.remove('is-playing');
       video.addEventListener('pause', () => {
         video.pause();
+        video.volume = 0;
       }, { once: true });
-      isPlaying = false;
+      video.pause();
       trigger.innerText = '再生する';
+      isPlaying = false;
       return;
     } else {
       video.play();
+      video.volume = 0.45;
       video.classList.add('is-playing');
       trigger.classList.add('is-playing');
       trigger.innerText = '停止する';
@@ -121,7 +126,7 @@ const addModalEvent = ((target) => {
     speed: 500,
     grabCursor: true,
     effect: "creative",
-    spaceBetween: 90,
+    spaceBetween: 7,
     creativeEffect: {
       effect: "creative",
       prev: {
@@ -135,6 +140,12 @@ const addModalEvent = ((target) => {
     navigation: {
       nextEl: button.next,
       prevEl: button.prev
+    },
+    breakpoints: {
+      // when window width is >= 320px
+      1024: {
+        spaceBetween: 90
+      }
     }
   });
 
@@ -148,7 +159,7 @@ const addModalEvent = ((target) => {
     const activeIndex = slider.activeIndex;
     const activeSlide = slider.slides[activeIndex];
     const postId = activeSlide.getAttribute('data-post-id');
-     
+
     // ajaxでjsonデータを取得し、反映する
     const xhr = new XMLHttpRequest();
     const param = new URLSearchParams();

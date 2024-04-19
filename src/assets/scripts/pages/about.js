@@ -1,31 +1,47 @@
 export default class about {
   constructor() { }
 
-  init(next) {  
+  init(next) {
     const video = next.querySelector('.js-about-video');
-    const trigger = next.querySelector('.js-about-video-trigger');
+    const playTrigger = next.querySelector('.js-about-video-trigger');
+    const volumeTrigger = next.querySelector('.js-about-video-volume-trigger');
     if(!video) return;
-  
-    let isPlaying = false;
 
-    trigger.addEventListener('click', e => {
+    video.volume = 0.5;
+
+    let isPlaying = true;
+    let ismMuted = true;
+
+    playTrigger.addEventListener('click', e => {
       e.preventDefault();
-      
       if(isPlaying) {
-        video.classList.remove('is-playing');
-        trigger.classList.remove('is-playing');
-        video.addEventListener('pause', () => {
-          video.pause();
-        }, { once: true });
+        video.pause();
+        video.classList.add('is-pause');
+        playTrigger.classList.add('is-pause');
         isPlaying = false;
-        trigger.innerText = '再生する';
         return;
       } else {
         video.play();
-        video.classList.add('is-playing');
-        trigger.classList.add('is-playing');
-        trigger.innerText = '停止する';
+        video.classList.remove('is-pause');
+        playTrigger.classList.remove('is-pause');
         isPlaying = true;
+        return;
+      }
+    });
+
+    volumeTrigger.addEventListener('click', e => {
+      e.preventDefault();
+      if(!isPlaying) return false;
+
+      if(ismMuted) {
+        video.muted = false;
+        volumeTrigger.classList.remove('is-muted');
+        ismMuted = false;
+        return;
+      } else {
+        video.muted = true;
+        volumeTrigger.classList.add('is-muted');
+        ismMuted = true;
         return;
       }
     });

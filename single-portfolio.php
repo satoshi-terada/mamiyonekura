@@ -5,7 +5,12 @@
     <header class="header">
       <div class="header_about">
         <h1 class="header_about_logo">
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/logo-mami-yonekura-museum.svg" width="380" alt="MAMI YONEKURA MUSEUM">
+          <a href="<?php echo home_url('/'); ?>">
+            <picture>
+              <source srcset="<?php echo get_template_directory_uri(); ?>/assets/images/common/logo-mami-yonekura-museum.svg" width="380" alt="MAMI YONEKURA MUSEUM" media="(max-width: 1024px)">
+              <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/logo-museum.svg" width="90" alt="MAMI YONEKURA MUSEUM">
+            </picture>
+          </a>
         </h1>
       </div>
     </header>
@@ -86,7 +91,12 @@ $note     = get_field('note');
         </ul>
         <dl>
           <div class="theme">
-            <dt>Theme</dt>
+            <dt><svg version="1.1" id="レイヤー_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 12 12" style="enable-background:new 0 0 12 12;" xml:space="preserve">
+              <g>
+                <path class="st0" d="M12,6c0,3.3-2.7,6-6,6c-3.3,0-6-2.7-6-6c0-3.4,2.7-6,6-6C9.3,0,12,2.7,12,6z M0.9,6c0,3.3,2.3,5.9,5.1,5.9
+                  c2.8,0,5.1-2.6,5.1-5.9c0-3.3-2.3-5.9-5.1-5.9C3.2,0.1,0.9,2.7,0.9,6z"></path>
+              </g>
+            </svg>Theme</dt>
             <dd>アブサン と ゴッホさん</dd>
           </div>
           <div class="title">
@@ -120,4 +130,5 @@ $note     = get_field('note');
   </div>
 </div>
 
+<?php get_template_part('template-parts/colortip'); ?>
 <?php get_footer(); ?>

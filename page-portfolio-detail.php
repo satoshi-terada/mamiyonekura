@@ -13,7 +13,9 @@
     <header class="header">
       <div class="header_about">
         <h1 class="header_about_logo">
-          <img src="<?php echo get_template_directory_uri(); ?>/assets/images/common/logo-mami-yonekura-museum.svg" width="380" alt="MAMI YONEKURA MUSEUM">
+          <a href="<?php echo home_url('/'); ?>">
+            <?php get_template_part('template-parts/logo', 'mami-yonekura-museum'); ?>
+          </a>
         </h1>
       </div>
     </header>
@@ -47,7 +49,7 @@ if ( ! isset( $first_data ) ) {
   }
   $date = get_field('date' , get_the_ID() );
   $first_data['date'] = ( null != $date ) ? date('F, d. Y', mktime(0,0,0,substr( $date, 3, 2 ),substr( $date, 0, 2 ),substr( $date, 6, 4))) : '';
-} 
+}
 
 ?>
                 <div class="swiper-slide" data-post-id="<?php echo get_the_ID(); ?>">
@@ -85,15 +87,21 @@ $thumbnail_img = wp_get_attachment_image_src(
       <div class="portfolio-data">
         <ul class="controller">
           <li class="controller_item">
-            <button class="controller_button is-prev js-prev">戻る<svg aria-label="戻る" width="48" height="48"><use xlink:href="#icon-arrow-prev"></use></svg></button>
+            <button class="controller_button is-prev js-prev"><svg aria-label="戻る" width="48" height="48"><use xlink:href="#icon-arrow-prev"></use></svg></button>
           </li>
           <li class="controller_item">
-            <button class="controller_button is-next js-next">進む<svg aria-label="進む" width="48" height="48"><use xlink:href="#icon-arrow-next"></use></svg></button>
+            <button class="controller_button is-next js-next"><svg aria-label="進む" width="48" height="48"><use xlink:href="#icon-arrow-next"></use></svg></button>
           </li>
         </ul>
         <dl>
           <div class="theme">
-            <dt>Theme</dt>
+            <dt>Theme<svg version="1.1" id="レイヤー_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                y="0px" viewBox="0 0 12 12" style="enable-background:new 0 0 12 12;" xml:space="preserve">
+              <g>
+                <path class="st0" d="M12,6c0,3.3-2.7,6-6,6c-3.3,0-6-2.7-6-6c0-3.4,2.7-6,6-6C9.3,0,12,2.7,12,6z M0.9,6c0,3.3,2.3,5.9,5.1,5.9
+                  c2.8,0,5.1-2.6,5.1-5.9c0-3.3-2.3-5.9-5.1-5.9C3.2,0.1,0.9,2.7,0.9,6z"/>
+              </g>
+              </svg></dt>
             <dd class="js-portfolioData-theme"><?php echo $first_data['theme']->name; ?></dd>
           </div>
           <div class="title">
@@ -116,9 +124,10 @@ $thumbnail_img = wp_get_attachment_image_src(
             <dt>Date</dt>
             <dd class="js-portfolioData-date"><?php echo $first_data['date']; ?></dd>
           </div>
-          <div>
+          <div class="note">
             <dt>Note</dt>
-            <dd class="js-portfolioData-note"><?php echo $first_data['note']; ?></dd>
+            <dd class="js-portfolioData-note">
+              <a href="<?php echo $first_data['note']; ?>" target="_blank"><?php echo $first_data['note']; ?></a></dd>
           </div>
         </dl>
       </div>
@@ -127,6 +136,9 @@ $thumbnail_img = wp_get_attachment_image_src(
 
   <footer class="footer"><?php get_template_part('template-parts/svg', 'copyright'); ?></footer>
   </div>
+  <?php get_template_part('template-parts/colortip'); ?>
 </div>
 
+
+<?php get_template_part('template-parts/icon', 'sprite'); ?>
 <?php get_footer(); ?>

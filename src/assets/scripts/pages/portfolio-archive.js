@@ -6,6 +6,8 @@ export default class portfolioArchive {
 
   init(next) {
     const target = next.querySelector('.js-slider-portfolio-archive');
+    console.log('target', target);
+    
     if(!target) return;
     
     const button = {
@@ -15,7 +17,7 @@ export default class portfolioArchive {
 
     const slider = new Swiper(target, { // eslint-disable-line
       slidesPerView: 'auto',
-      spaceBetween: 30,
+      spaceBetween: 40,
       loop: false,
       navigation: {
         nextEl: button.next,

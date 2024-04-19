@@ -4,27 +4,10 @@ export default class home {
   constructor() {}
 
   init(next) {
-    this.changeFontColor(next);
     this.randomBackground(next);
+    this.drawing();
   }
 
-  changeFontColor(next) {
-    const colors = next.querySelector('.js-colors');
-    const buttons = colors.querySelectorAll('button');
-    buttons.forEach((button) => {
-      button.addEventListener('click', () => {
-        // クリックするとdata-rgbの値を取得し、rootに変数を設定する
-        const rgb = button.dataset.rgb;
-        document.documentElement.style.setProperty('--color-text', rgb);
-        // クリックしたボタンにis-activeを付与する
-        buttons.forEach((button) => {
-          button.classList.remove('is-active');
-        });
-        button.classList.add('is-active');
-      });
-    });
-  }
-  
   randomBackground(next) {
     const body = common.elements.body;
     const trigger = next.querySelector('.js-topEye-button');
@@ -32,7 +15,7 @@ export default class home {
     const backImages = background.querySelectorAll('img');
     const backImagesLength = backImages.length;
     let showBackImagesIndex = 0;
-    
+
     const showBackground = () => {
       // ランダムで背景画像を表示
       const backImagesIndex = Math.floor(Math.random() * backImagesLength);
@@ -62,4 +45,116 @@ export default class home {
       }
     });
   }
-};
+
+  drawing() {
+    const canvas = document.getElementById('drawingCanvas');
+    const container = document.querySelector('[data-barba-namespace="home"]');
+    const trigger = document.querySelector('.js-drawingTrigger');
+    let currentColor = document.querySelector(':root').style.getPropertyValue('--color-text');
+
+    let isDrawingEnabled = false;
+
+    canvas.width = window.innerWidth
+    canvas.height = container.clientHeight;
+
+    const ctx = canvas.getContext('2d');
+    let isDrawing = false;
+
+    // イベントハンドラを共通化
+    function startDrawing(event) {
+      if (!isDrawingEnabled) return;
+      isDrawing = true;
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;    // relationship bitmap vs. element for X
+      const scaleY = canvas.height / rect.height;  // relationship bitmap vs. element for Y
+
+      let x, y;
+      if (event.type === 'touchstart') {
+        x = ((event.touches[0].clientX + window.pageXOffset) - rect.left) * scaleX;
+        y = ((event.touches[0].clientY + window.pageYOffset) - rect.top) * scaleY;
+      } else {
+        x = (event.pageX - rect.left) * scaleX;
+        y = (event.pageY - rect.top) * scaleY;
+      }
+
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.strokeStyle = currentColor; // 現在の色を設定
+      ctx.lineWidth = 0.35;
+    }
+
+    function continueDrawing(event) {
+      if (!isDrawing || !isDrawingEnabled) return;
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;    // relationship bitmap vs. element for X
+      const scaleY = canvas.height / rect.height;  // relationship bitmap vs. element for Y
+
+      let x, y;
+      if (event.type === 'touchmove') {
+        x = ((event.touches[0].clientX + window.pageXOffset) - rect.left) * scaleX;
+        y = ((event.touches[0].clientY + window.pageYOffset) - rect.top) * scaleY;
+      } else {
+        x = (event.pageX - rect.left) * scaleX;
+        y = (event.pageY - rect.top) * scaleY;
+      }
+
+      ctx.lineTo(x, y);
+      ctx.stroke();
+    }
+
+    function endDrawing() {
+      if (!isDrawingEnabled) return;
+      isDrawing = false;
+      ctx.closePath();
+    }
+
+    trigger.addEventListener('click', e => {
+      if(isDrawingEnabled) {
+        isDrawingEnabled = false;
+        canvas.style.pointerEvents = 'none';
+        container.style.pointerEvents = 'auto';
+
+        // events
+        canvas.removeEventListener('mousedown', startDrawing);
+        canvas.removeEventListener('mousemove', continueDrawing);
+        canvas.removeEventListener('mouseup', endDrawing);
+        canvas.removeEventListener('touchstart', (e) => {
+            startDrawing(e.touches[0]);
+            e.preventDefault();
+        });
+        canvas.removeEventListener('touchmove', (e) => {
+            continueDrawing(e.touches[0]);
+            e.preventDefault();
+        });
+        canvas.removeEventListener('touchend', (e) => {
+            endDrawing();
+            e.preventDefault();
+        });
+      } else {
+        isDrawingEnabled = true;
+        canvas.style.pointerEvents = 'auto';
+        container.style.pointerEvents = 'none';
+        currentColor = document.querySelector(':root').style.getPropertyValue('--color-text');
+
+        // events
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', continueDrawing);
+        canvas.addEventListener('mouseup', endDrawing);
+        canvas.addEventListener('touchstart', (e) => {
+            startDrawing(e.touches[0]);
+            e.preventDefault();
+        });
+        canvas.addEventListener('touchmove', (e) => {
+            continueDrawing(e.touches[0]);
+            e.preventDefault();
+        });
+        canvas.addEventListener('touchend', (e) => {
+            endDrawing();
+            e.preventDefault();
+        });
+      }
+      e.target.classList.toggle('is-active');
+      e.target.parentElement.classList.toggle('is-active');
+    });
+  }
+}

@@ -3,16 +3,19 @@
     'post_type' => 'news',
     'posts_per_page' => 3
   );
- 
+
   $my_query = new WP_Query( $args );
+
+  // カスタム投稿「news」の場合
+  $is_news = is_post_type_archive('news') ? true : false;
 
   if ( $my_query->have_posts() ) { ?>
 
-<div class="aside-news">
+<div class="aside-news <?php echo $is_news ? 'is-sticky' : '' ; ?>">
   <div class="news">
     <p class="news_label">NEW</p>
     <div class="news_list">
-      
+
 <?php while ( $my_query->have_posts() ) : $my_query->the_post();
 
 if ( get_field('is_english', get_the_ID() ) ) {
@@ -38,7 +41,7 @@ if ( get_field('is_english', get_the_ID() ) ) {
 <?php } ?>
         </a>
       </article>
-<?php 
+<?php
       endwhile; ?>
 
     </div>
