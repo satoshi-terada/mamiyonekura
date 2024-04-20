@@ -1,12 +1,5 @@
 <?php get_header(); ?>
 
-<?php // ポートフォリオ一覧を取得
-  $args = array(
-    'post_type' => 'portfolio',
-    'posts_per_page' => -1
-    );
-    $portfolio = new WP_Query( $args );
-?>
 <div data-barba="container" data-barba-namespace="portfolio-archive">
   <div class="wrapper">
     <header class="header-small">
@@ -40,31 +33,25 @@
             <?php get_template_part('template-parts/logo', 'mami-yonekura'); ?>
           </a>
         </p>
-<?php if ( $portfolio->have_posts() ) {
-$view_count = 0;   ?>
+<?php
+    $terms = get_terms( 'portfolio_theme');
+    if ( count( $terms ) > 0 ) { ?>
         <div class="page-portfolioArchive_lists">
           <div class="js-slider-portfolio-archive swiper">
             <div class="swiper-wrapper">
-<?php while ( $portfolio->have_posts()) : $portfolio->the_post();
-if ( $view_count % 10 == 0 ) { ?>
               <div class="swiper-slide">
                 <ul class="page-portfolioArchive_list">
+<?php foreach( $terms as $theme ) { ?>
+                  <li><a href="/portfolio/theme/<?php echo $theme->slug; ?>/"><?php echo $theme->name; ?></a></li>
 <?php } ?>
-                  <li><a href="/portfolio-detail/#<?php echo $view_count; ?> "><?php the_title(); ?></a></li>
-<?php
-$view_count++;
-if ( $view_count % 10 == 0 || $view_count >= $portfolio->found_posts ) { ?>
                 </ul>
               </div>
-<?php }
-    endwhile; ?>
             </div>
           </div>
         </div>
 <?php } ?>
       </div>
     </div>
-
     <div class="aside-control">
       <ul class="controller page-portfolio_control">
         <li class="controller_item">

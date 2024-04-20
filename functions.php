@@ -34,6 +34,14 @@ function post_has_archive($args, $post_type)
 add_filter('register_post_type_args', 'post_has_archive', 10, 2);
 
 
+// リライトルールを設定
+function my_rewrite_rule() {
+  add_rewrite_rule('portfolio/theme/([^/]+)/?$', 'index.php?portfolio_theme=$matches[1]', 'top');
+}
+
+add_action('init', 'my_rewrite_rule');
+
+
 /**
  * WordPressでAJAXを利用するためのJSを出力
  */
@@ -44,7 +52,7 @@ function mysite_search_ajax() {
  }
 
 function get_portfolio_info( $post_id = 0 ) {
-  
+
   $keys = array('materials', 'size', 'place', 'note' );
   $res_data = array();
 

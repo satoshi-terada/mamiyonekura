@@ -1,11 +1,21 @@
 <?php get_header(); ?>
 
 <?php // ポートフォリオ一覧を取得
-  $args = array(
-    'post_type' => 'portfolio',
-    'posts_per_page' => -1
-    );
-    $portfolio = new WP_Query( $args );
+$queried_object = get_queried_object();
+$args = array(
+  'post_type' => 'portfolio',
+  'posts_per_page' => -1,
+  'tax_query'  => array(
+    'relation'  => 'AND',
+    array(
+      'taxonomy' => 'portfolio_theme',
+      'field' => 'term_id',
+      'terms' => array( $queried_object->term_id ),
+      'operator' => 'IN',
+    ),
+  ),
+);
+$portfolio = new WP_Query( $args );
 ?>
 
 <div data-barba="container" data-barba-namespace="portfolio-detail">
