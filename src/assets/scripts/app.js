@@ -83,7 +83,7 @@ barba.hooks.after(() => {
   setTimeout(() => {
     common.elements.layer.classList.remove('is-loading');
     common.elements.html.style.scrollBehavior = 'smooth';
-  }, 350);
+  }, 500);
 });
 
 const pageStartScroll = next => {

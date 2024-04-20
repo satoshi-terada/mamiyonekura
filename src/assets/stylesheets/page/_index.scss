@@ -47,12 +47,12 @@
   z-index: 1000;
   opacity: 0;
   visibility: hidden;
-  transition: opacity .3s ease-out, visibility .3s ease-out;
+  transition: opacity .5s ease-out, visibility .5s ease-out;
 
   &.is-loading {
     opacity: 1;
     visibility: visible;
-    transition: opacity .15s ease-out, visibility .15s ease-out;
+    transition: opacity .3s ease-out, visibility .3s ease-out;
   }
 }
 
