@@ -154,7 +154,7 @@ export default class home {
         });
       }
       e.target.classList.toggle('is-active');
-      e.target.parentElement.classList.toggle('is-active');
+      e.target.closest('.top-drawing').classList.toggle('is-active');
     });
   }
 }

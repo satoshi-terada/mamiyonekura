@@ -301,8 +301,8 @@
 .top-drawing {
   bottom: 2px;
   position: absolute;
-  right: -29px;
-  width: 30px;
+  right: -23px;
+  width: 20px;
   height: 20px;
   z-index: 10;
   cursor: pointer;
@@ -316,13 +316,19 @@
     height: 100%;
   }
 
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+  }
+
   &.is-active {
     &::after {
       content: "";
       position: absolute;
       inset: 50% 0 0 50%;
       transform: translateX(-50%);
-      width: 36px;
+      width: 30px;
       height: 1px;
       background: currentColor;
     }

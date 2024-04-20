@@ -130,7 +130,7 @@
       <?php get_template_part('template-parts/colortip'); ?>
 
       <p class="top-drawing">
-        <button class="top-drawing_button js-drawingTrigger">PEN</button>
+        <button class="top-drawing_button js-drawingTrigger"><svg width="32" height="22"><use xlink:href="#icon-pen"></use></svg></button>
       </p>
 
       <button class="top-eye js-topEye-button">
@@ -171,7 +171,7 @@
       if ( $my_query->have_posts() ) :
         while ( $my_query->have_posts() ) : $my_query->the_post();
           $image_id = get_field('image', get_the_ID());
-          $image = wp_get_attachment_image_src($image_id, 'full');
+          $image = wp_get_attachment_image_src($image_id, 'thumbnail');
           $image_url = $image[0];
       ?>
       <li><img src="<?php echo $image_url; ?>" alt=""></li>

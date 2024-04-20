@@ -111,11 +111,10 @@
 .footer {
   grid-area: 5 / 1 / 6 / 3;
   justify-self: center;
-  margin: 30px 0 20px;
+  margin: 50px 0 20px;
   align-self: flex-end;
 
   @include is-medium {
-    margin-top: 20px;
     grid-area: auto;
     justify-self: flex-end;
   }
@@ -165,10 +164,10 @@
   }
 
   li + li {
-    margin-top: 15px;
+    margin-top: 12px;
 
     @include is-medium {
-      margin-top: 8px;
+      margin-top: 6px;
     }
   }
 
@@ -305,17 +304,17 @@
 
 .page-aboutContents_text {
   font-size: 1.3rem;
-  line-height: 1.6923;
-  margin-top: 28px;
+  line-height: 1.8;
+  margin-top: 20px;
 
   @include is-medium {
-    margin-top: 18px;
+    margin-top: 15px;
   }
 }
 
 .page-aboutContentsHistory {
   font-size: 1.2rem;
-  margin-top: 43px;
+  margin-top: 35px;
   line-height: 1.8333333333333333;
   break-before: column;
   flex: 1;
@@ -344,6 +343,10 @@
 
   li {
     max-width: 250px;
+
+    & + li {
+      margin-top: 2px;
+    }
   }
 }
 
@@ -389,11 +392,7 @@
   font-family: $font-family-en;
 
   & + & {
-    margin-top: 28px;
-
-    @include is-small {
-      margin-top: 24px;
-    }
+    margin-top: 14px;
   }
 }
 
@@ -1085,18 +1084,18 @@
 .page-inquiryForm_blocks {
   display: flex;
   flex-wrap: wrap;
-  gap: 36px 10.52631%;
+  gap: 20px 10.52631%;
   margin-top: 140px;
 
   @include is-medium {
     margin-top: 59px;
-    column-gap: 44px;
+    column-gap: 35px;
   }
 
   @include is-small {
     margin-top: 49px;
     flex-direction: column;
-    column-gap: 29px;
+    column-gap: 20px;
     max-width: 300px;
   }
 
@@ -1234,6 +1233,10 @@
     width: 100%;
     height: 11.5em;
     font-family: inherit !important;
+
+    @include is-medium {
+      height: 13lh;
+    }
   }
 
   .wpcf7-not-valid-tip {
@@ -1249,10 +1252,26 @@
 }
 
 .page-inquiryForm_button {
-  margin-top: 64px;
+  margin-top: 52px;
+  width: max-content;
+  transition: opacity .2s ease-out;
+  position: relative;
+
+  &:hover {
+    opacity: .65;
+  }
 
   @include is-medium {
-    margin-top: 40px;
+    margin-top: 30px;
+  }
+
+  svg {
+    width: 25px;
+    height: 32px;
+    fill: currentColor;
+    position: absolute;
+    inset: auto 0;
+    margin: auto 0;
   }
 
   input,
@@ -1261,11 +1280,9 @@
     cursor: pointer;
     font-family: inherit;
     color: currentColor;
-    transition: opacity .2s ease-out;
-
-    &:hover {
-      opacity: .65;
-    }
+    height: 38px;
+    width: 78px;
+    text-align: right;
   }
 }
 
