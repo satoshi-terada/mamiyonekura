@@ -40,7 +40,7 @@ const changeFontColor = next => {
 
 
 // meta系の更新
-const ANALYTICS_TRACKING_ID = '******';
+const ANALYTICS_TRACKING_ID = 'G-Y6QZZSD8ZJ';
 
 const updateMeta = (next) => {
   const { head } = document
@@ -79,6 +79,18 @@ barba.hooks.before(() => {
 
 barba.hooks.after(() => {
   barba.wrapper.classList.remove('is-animating');
+
+
+  console.log(barba.data.next.namespace);
+
+
+  if(barba.data.next.namespace === 'about') {
+    document.documentElement.style.setProperty('--color-text', '#FFFFFF');
+    localStorage.setItem('color', '#FFFFFF');
+  } else {
+    document.documentElement.style.setProperty('--color-text', '#000000');
+    localStorage.setItem('color', '#000000');
+  }
 
   setTimeout(() => {
     common.elements.layer.classList.remove('is-loading');
@@ -128,6 +140,7 @@ barba.init({
       namespace: 'about',
       afterEnter({next}) {
         pages.about.init(next.container);
+        changeFontColor();
       }
     },
     {
@@ -142,6 +155,15 @@ barba.init({
     {
       once({next}) {
         pageStartScroll(next);
+
+        if(next.namespace === 'about') {
+          document.documentElement.style.setProperty('--color-text', '#FFFFFF');
+          localStorage.setItem('color', '#FFFFFF');
+        } else {
+          document.documentElement.style.setProperty('--color-text', '#000000');
+          localStorage.setItem('color', '#000000');
+        }
+
         changeFontColor(next.container);
 
         // ローカルストレージに保存されている色を取得し、rootに変数を設定する

@@ -300,12 +300,17 @@
   @include is-medium {
     font-size: 1.5rem;
   }
+
+  span:first-child {
+    letter-spacing: 0.12em;
+  }
 }
 
 .page-aboutContents_text {
   font-size: 1.3rem;
   line-height: 1.8;
   margin-top: 20px;
+  letter-spacing: 0.12em;
 
   @include is-medium {
     margin-top: 15px;
@@ -343,6 +348,8 @@
 
   li {
     max-width: 250px;
+    letter-spacing: 0.13em;
+    font-feature-settings: "palt";
 
     & + li {
       margin-top: 2px;
@@ -574,6 +581,7 @@
 .page-newsPost_title {
   line-height: 1.4666666666666666;
   position: relative;
+  letter-spacing: .12em;
 
   @include is-medium {
     font-size: 1.4rem;
@@ -584,7 +592,7 @@
   position: absolute;
   width: 12px;
   height: 12px;
-  top: 0.25em;
+  top: 0.35em;
   left: -23px;
   fill: currentColor;
 }
@@ -610,6 +618,7 @@
   margin-top: 58px;
   line-height: 2.14;
   position: relative;
+  letter-spacing: .12em;
 
   @include is-medium {
     margin-top: 40px;
@@ -645,6 +654,29 @@
     height: 1px;
     opacity: .25;
     border-color: currentColor;
+  }
+
+  .wp-block-image {
+    margin: 2.5em 0;
+
+    &:last-child:first-child {
+      margin: 0;
+    }
+  }
+
+  .wp-block-columns{
+    margin: 2.5em 0;
+    gap: 2em;
+  }
+
+  .wp-block-embed {
+    margin: 2.5em 0;
+
+    iframe {
+      aspect-ratio: 16/9;
+      width: 100%;
+      height: auto;
+    }
   }
 }
 
